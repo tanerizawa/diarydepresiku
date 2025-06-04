@@ -18,19 +18,20 @@ Repositori berisi beberapa komponen:
 - **Dokumentasi** (`*.md`)
   - Analisis kebutuhan, rancangan fitur, rencana pengembangan, dan konsep desain UI/UX.
   - Skema arsitektur teknis dan struktur proyek Android/Backend.
-- **Backend Flask**
-  - `auth_routes.py`, `diary_routes.py`, `models.py` menangani autentikasi dan penyimpanan entri diary.
-  - `settings.py` dan `run.py` untuk konfigurasi serta menjalankan server.
-- **Prototype Android (Kotlin)**
-  - Berbasis MVVM dan Jetpack Compose.
-  - Termasuk `ApiService`, `Repository`, `ViewModel`, dan contoh `LoginScreen`.
+- **Backend Flask** (`backend_prototype/`)
+  - Folder `app/` memuat `models.py` serta blueprint di `routes/`.
+  - Konfigurasi berada di `config/settings.py` dan server dijalankan via `run.py`.
+- **Prototype Android (Kotlin)** (`android_client_prototype/`)
+  - Mengikuti pola MVVM dengan Jetpack Compose.
+  - Kode sumber berada di `app/src/main/java/com/example/diarydepresiku`.
 
 ## Menjalankan Backend
 
-1. Buat dan aktifkan virtual environment.
-2. Install dependensi: `pip install -r requirements.txt`.
-3. Atur variabel lingkungan (`SECRET_KEY`, `JWT_SECRET_KEY`, `DATABASE_URL`).
-4. Jalankan server dengan `python run.py`.
+1. Masuk ke direktori `backend_prototype`.
+2. Buat dan aktifkan virtual environment.
+3. Install dependensi: `pip install -r requirements.txt`.
+4. Atur variabel lingkungan (`SECRET_KEY`, `JWT_SECRET_KEY`, `DATABASE_URL`).
+5. Jalankan server dengan `python run.py`.
 
 ## Status Pengembangan
 
