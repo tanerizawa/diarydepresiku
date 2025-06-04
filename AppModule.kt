@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 // Define the DataStore instance
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = \"settings\")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 /**
  * Dagger Hilt Module to provide application-wide dependencies.
@@ -110,7 +110,7 @@ object AppModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            \"diary_database\"
+            "diary_database"
         ).build()
     }
 

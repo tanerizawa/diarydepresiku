@@ -65,7 +65,7 @@ class DiaryViewModel @Inject constructor(
                     _diaryEntriesState.value = Resource.Success(result.data?.entries ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _diaryEntriesState.value = Resource.Error(result.message ?: \"Failed to load entries\")
+                    _diaryEntriesState.value = Resource.Error(result.message ?: "Failed to load entries")
                 }
                 else -> { /* Already loading */ }
             }

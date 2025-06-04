@@ -27,8 +27,8 @@ fun LoginScreen(
     onNavigateToRegister: () -> Unit
 ) {
     // State variables for email and password input fields
-    var email by remember { mutableStateOf(\"\") }
-    var password by remember { mutableStateOf(\"\") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
@@ -51,7 +51,7 @@ fun LoginScreen(
             }
             is Resource.Error -> {
                 isLoading = false
-                errorMessage = state.message ?: \"An unknown error occurred\"
+                errorMessage = state.message ?: "An unknown error occurred"
                 // Keep the state until user tries again or navigates away
                 // Optionally reset state after showing message: viewModel.resetLoginState()
             }
@@ -71,14 +71,14 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(\"Login\", style = MaterialTheme.typography.headlineMedium)
+        Text("Login", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(32.dp))
 
         // Email Input Field
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text(\"Email\") },
+            label = { Text("Email") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
             enabled = !isLoading
@@ -89,7 +89,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text(\"Password\") },
+            label = { Text("Password") },
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = PasswordVisualTransformation(),
             singleLine = true,
@@ -120,14 +120,14 @@ fun LoginScreen(
             if (isLoading) {
                 CircularProgressIndicator(modifier = Modifier.size(24.dp), strokeWidth = 2.dp)
             } else {
-                Text(\"Login\")
+                Text("Login")
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
 
         // Button to navigate to Register screen
         TextButton(onClick = onNavigateToRegister, enabled = !isLoading) {
-            Text(\"Don\\'t have an account? Register\")
+            Text("Don\\'t have an account? Register")
         }
     }
 }

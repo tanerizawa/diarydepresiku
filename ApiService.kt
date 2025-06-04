@@ -14,27 +14,27 @@ interface ApiService {
 
     // --- Authentication Endpoints ---
 
-    @POST(\"auth/register\")
+    @POST("auth/register")
     suspend fun registerUser(
         @Body authRequest: AuthRequest
     ): Response<SimpleResponse> // Use Response<> for full HTTP response access
 
-    @POST(\"auth/login\")
+    @POST("auth/login")
     suspend fun loginUser(
         @Body authRequest: AuthRequest
     ): Response<AuthResponse>
 
     // --- Diary Entry Endpoints ---
 
-    @POST(\"diary/entries\")
+    @POST("diary/entries")
     suspend fun createDiaryEntry(
-        @Header(\"Authorization\") token: String, // Pass JWT token in header
+        @Header("Authorization") token: String, // Pass JWT token in header
         @Body diaryEntryRequest: DiaryEntryRequest // Define DiaryEntryRequest data class
     ): Response<DiaryEntryResponse> // Define DiaryEntryResponse data class
 
-    @GET(\"diary/entries\")
+    @GET("diary/entries")
     suspend fun getDiaryEntries(
-        @Header(\"Authorization\") token: String
+        @Header("Authorization") token: String
     ): Response<DiaryEntriesListResponse> // Define DiaryEntriesListResponse data class
 
     // Add other endpoints here as needed (e.g., get specific entry, update, delete)
@@ -47,7 +47,7 @@ data class DiaryEntryRequest(
     val emotion_category: String?,
     val emotion_intensity: Int?,
     val notes: String?,
-    val entry_timestamp: String? = null // Optional: ISO 8601 format string e.g., \"2023-10-27T10:15:30Z\"
+    val entry_timestamp: String? = null // Optional: ISO 8601 format string e.g., "2023-10-27T10:15:30Z"
 )
 
 // Response for a single diary entry (e.g., after creation)

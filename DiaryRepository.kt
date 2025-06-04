@@ -39,7 +39,7 @@ class DiaryRepository @Inject constructor(
         // Get the auth token first
         val token = userPreferences.authToken.firstOrNull()
         if (token == null) {
-            return Resource.Error(\"User not authenticated\")
+            return Resource.Error("User not authenticated")
         }
 
         val request = DiaryEntryRequest(
@@ -50,17 +50,17 @@ class DiaryRepository @Inject constructor(
         )
 
         return try {
-            // Add \"Bearer \" prefix to the token for the header
-            val response = apiService.createDiaryEntry(token = \"Bearer $token\", diaryEntryRequest = request)
+            // Add "Bearer " prefix to the token for the header
+            val response = apiService.createDiaryEntry(token = "Bearer $token", diaryEntryRequest = request)
             if (response.isSuccessful && response.body() != null) {
                 Resource.Success(response.body()!!)
             } else {
-                Resource.Error(response.message() ?: \"Failed to create entry\")
+                Resource.Error(response.message() ?: "Failed to create entry")
             }
         } catch (e: HttpException) {
-            Resource.Error(e.localizedMessage ?: \"An unexpected HTTP error occurred\")
+            Resource.Error(e.localizedMessage ?: "An unexpected HTTP error occurred")
         } catch (e: IOException) {
-            Resource.Error(\"Couldn\\'t reach server. Check your internet connection.\")
+            Resource.Error("Couldn\\'t reach server. Check your internet connection.")
         }
     }
 
@@ -72,20 +72,20 @@ class DiaryRepository @Inject constructor(
     suspend fun getDiaryEntries(): Resource<DiaryEntriesListResponse> {
         val token = userPreferences.authToken.firstOrNull()
         if (token == null) {
-            return Resource.Error(\"User not authenticated\")
+            return Resource.Error("User not authenticated")
         }
 
         return try {
-            val response = apiService.getDiaryEntries(token = \"Bearer $token\")
+            val response = apiService.getDiaryEntries(token = "Bearer $token")
             if (response.isSuccessful && response.body() != null) {
                 Resource.Success(response.body()!!)
             } else {
-                Resource.Error(response.message() ?: \"Failed to retrieve entries\")
+                Resource.Error(response.message() ?: "Failed to retrieve entries")
             }
         } catch (e: HttpException) {
-            Resource.Error(e.localizedMessage ?: \"An unexpected HTTP error occurred\")
+            Resource.Error(e.localizedMessage ?: "An unexpected HTTP error occurred")
         } catch (e: IOException) {
-            Resource.Error(\"Couldn\\'t reach server. Check your internet connection.\")
+            Resource.Error("Couldn\\'t reach server. Check your internet connection.")
         }
     }
 

@@ -40,12 +40,12 @@ class AuthRepository @Inject constructor(
                 Resource.Success(response.body()!!)
             } else {
                 // Handle specific HTTP error codes if needed
-                Resource.Error(response.message() ?: \"Registration failed\")
+                Resource.Error(response.message() ?: "Registration failed")
             }
         } catch (e: HttpException) {
-            Resource.Error(e.localizedMessage ?: \"An unexpected HTTP error occurred\")
+            Resource.Error(e.localizedMessage ?: "An unexpected HTTP error occurred")
         } catch (e: IOException) {
-            Resource.Error(\"Couldn\'t reach server. Check your internet connection.\")
+            Resource.Error("Couldn\'t reach server. Check your internet connection.")
         }
     }
 
@@ -71,12 +71,12 @@ class AuthRepository @Inject constructor(
                 )
                 Resource.Success(authData)
             } else {
-                Resource.Error(response.message() ?: \"Invalid credentials or server error\")
+                Resource.Error(response.message() ?: "Invalid credentials or server error")
             }
         } catch (e: HttpException) {
-            Resource.Error(e.localizedMessage ?: \"An unexpected HTTP error occurred\")
+            Resource.Error(e.localizedMessage ?: "An unexpected HTTP error occurred")
         } catch (e: IOException) {
-            Resource.Error(\"Couldn\'t reach server. Check your internet connection.\")
+            Resource.Error("Couldn\'t reach server. Check your internet connection.")
         }
     }
 
